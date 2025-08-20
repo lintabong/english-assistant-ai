@@ -1,5 +1,5 @@
 from sqlalchemy import (
-    Column, Integer, String, DateTime, func
+    Column, Integer, String, DateTime, func, Text
 )
 from sqlalchemy.orm import relationship
 from bot.services.database import Base
@@ -12,6 +12,7 @@ class ConversationSet(Base):
     title = Column(String(200), nullable=False)
     category = Column(String(100))
     speaker = Column(String(100))
+    context = Column(Text)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 

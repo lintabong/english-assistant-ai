@@ -1,15 +1,12 @@
-import json
-import re
+
 import os
-from typing import Optional, List, Dict
 from google import genai
 from google.genai import types
-# from bot.helpers.date_util import now_as_string
 from bot.constants import (
     GEMINI_API_KEY,
     GEMINI_MODEL,
-    GEMINI_SYSTEM_INSTRUCTION_BASE,
-    GEMINI_SYSTEM_INSTRUCTION_BASE_PHOTO
+    BASE_ANALYZE_AND_SCORE,
+    BASE_SPEECH_TO_RAW_TEXT
 )
 
 
@@ -28,29 +25,23 @@ class LLMModel:
             result.append(row)
         return result
 
-    def create_base_chat_model(self, history: Optional[List] = None):
-        return self.create_chat_model(
-            '', history)
-
-    def create_chat_model(self, instruction: str, history: Optional[List] = None):
+    def generate_analyze_and_text_score(self, question):
         return self.client.chats.create(
             model=GEMINI_MODEL,
-            config=types.GenerateContentConfig(system_instruction=instruction),
-            history=history
+            config=types.GenerateContentConfig(
+                system_instruction=BASE_ANALYZE_AND_SCORE.replace('my_question', question))
+        )
+    
+    def generate_analyze_and_text_score_with_question(self, question):
+        return self.client.chats.create(
+            model=GEMINI_MODEL,
+            config=types.GenerateContentConfig(
+                system_instruction=BASE_ANALYZE_AND_SCORE.replace('my_question', question))
         )
 
-    def parse_context_image(self, image_bytes):
+    def generate_text_from_spech(self, myfile):
         return self.client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=[
-            types.Part.from_bytes(
-                data=image_bytes,
-                mime_type='image/jpeg',
-            ),
-            GEMINI_SYSTEM_INSTRUCTION_BASE_PHOTO
+            model="gemini-2.0-flash",
+            contents=[BASE_SPEECH_TO_RAW_TEXT, myfile
             ]
         )
-
-    def parse_json_response(self, text: str) -> Dict:
-        clean_text = re.sub(r'^```json\s*|\s*```$', '', text.strip())
-        return json.loads(clean_text)

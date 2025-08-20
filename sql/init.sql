@@ -3,6 +3,7 @@ CREATE TABLE conversation_sets (
     title VARCHAR(200) NOT NULL,
     category VARCHAR(100),
     speaker VARCHAR(100),
+    context TEXT,             -- field context baru, default string kosong
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

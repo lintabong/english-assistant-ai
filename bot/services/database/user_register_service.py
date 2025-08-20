@@ -10,7 +10,6 @@ from bot.services.database.models.user_conversation_log import UserConversationL
 from bot.services.database.models.conversation_item import ConversationItem
 
 
-
 class UserAlreadyExistsError(Exception):
     """Exception jika user sudah ada di database"""
     pass
