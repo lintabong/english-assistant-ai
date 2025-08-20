@@ -1,11 +1,20 @@
-from bot.services.database.models.llm_logs import LLMLog
+
+
+from bot.services.database.models.llm_log import LLMLog
 from bot.services.database import get_async_session
 
-async def insert_llm_log(message: str, intent: str, system_instruction: str, response: str, input_token: int, output_token: int):
+async def insert_llm_log(
+        user_id: str | None,
+        message: str,
+        system_instruction: str | None,
+        response: str,
+        input_token: int = 0,
+        output_token: int = 0
+    ):
     async with get_async_session() as session:
         new_log = LLMLog(
+            user_id=user_id,
             message=message,
-            intent=intent,
             system_instruction=system_instruction,
             response=response,
             input_token=input_token,
