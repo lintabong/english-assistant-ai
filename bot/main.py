@@ -1,5 +1,4 @@
 
-import os
 import logging
 from telegram.ext import (
     ApplicationBuilder, 
@@ -39,8 +38,8 @@ class TelegramFinanceBot:
         self._register_handlers()
 
     def _register_handlers(self):
-        self.app.add_handler(CommandHandler('register', self.command_register.register))
         self.app.add_handler(CommandHandler('ask', self.command_ask.ask_question))
+        self.app.add_handler(CommandHandler('register', self.command_register.register))
         self.app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, self.message_handler.receive_message))
         self.app.add_handler(MessageHandler(filters.VOICE, self.voice_handler.receive_voice))
 

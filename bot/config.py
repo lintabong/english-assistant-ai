@@ -1,5 +1,6 @@
-import logging
+
 import os
+import logging
 
 def setup_logging():
     """Setup global logging configuration."""

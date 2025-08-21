@@ -25,18 +25,20 @@ class LLMModel:
             result.append(row)
         return result
 
-    def generate_analyze_and_text_score(self, question):
+    def generate_analyze_and_text_score(self):
         return self.client.chats.create(
             model=GEMINI_MODEL,
             config=types.GenerateContentConfig(
-                system_instruction=BASE_ANALYZE_AND_SCORE.replace('my_question', question))
+                system_instruction=BASE_ANALYZE_AND_SCORE)
         )
     
-    def generate_analyze_and_text_score_with_question(self, question):
+    def generate_analyze_and_text_score_with_question(self, question, context):
         return self.client.chats.create(
             model=GEMINI_MODEL,
             config=types.GenerateContentConfig(
-                system_instruction=BASE_ANALYZE_AND_SCORE.replace('my_question', question))
+                system_instruction=BASE_ANALYZE_AND_SCORE
+                .replace('my_question', question)
+                .replace('my_context', context))
         )
 
     def generate_text_from_spech(self, myfile):

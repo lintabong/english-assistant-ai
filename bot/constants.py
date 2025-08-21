@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 
@@ -54,4 +55,5 @@ Return your answer in **JSON format** exactly like this:
 }}
 
 Question: {my_question}
+Context/Relevance: {my_context}
 """
