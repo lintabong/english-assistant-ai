@@ -10,6 +10,7 @@ from bot.config import setup_logging
 
 from bot.services.cache import Cache
 from bot.services.llm_model import LLMModel
+from bot.services.storage import StorageManager
 
 from bot.handlers.command_ask import CommandAsk
 from bot.handlers.command_register import CommandRegister
@@ -29,8 +30,9 @@ class TelegramFinanceBot:
 
         self.cache = Cache()
         self.llm_model = LLMModel()
+        self.storage_manager = StorageManager()
 
-        self.command_ask = CommandAsk(self.cache, self.llm_model)
+        self.command_ask = CommandAsk(self.cache, self.llm_model, self.storage_manager)
         self.command_register = CommandRegister(self.cache, self.llm_model)
         self.message_handler = Message(self.cache, self.llm_model)
         self.voice_handler = Voice(self.cache, self.llm_model)

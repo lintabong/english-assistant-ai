@@ -6,3 +6,5 @@ __pycache__
 
 example_*.py
 voice.ogg
+
+tmp_file.mp3
