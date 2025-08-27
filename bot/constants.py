@@ -31,6 +31,8 @@ REDIS_STATE_EXPIRED_TIME = int(os.getenv('REDIS_STATE_EXPIRED_TIME', 2))
 REDIS_SESSION_EXPIRED_TIME = int(os.getenv('REDIS_SESSION_EXPIRED_TIME', 2))
 REDIS_MCP_EXPIRED_TIME = 1
 
+REPLY_QUESTION_NOT_FOUND = '⚠️ Tidak ada pertanyaan untuk set ini atau user tidak aktif.'
+
 
 BASE_SPEECH_TO_RAW_TEXT = """
 You are a strict English transcriber. Transcribe this audio exactly as spoken, without fixing grammar or spelling. \
