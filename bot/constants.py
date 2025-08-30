@@ -33,6 +33,17 @@ REDIS_MCP_EXPIRED_TIME = 1
 
 REPLY_QUESTION_NOT_FOUND = '⚠️ Tidak ada pertanyaan untuk set ini atau user tidak aktif.'
 
+BASE_GENERATE_CONVERSATION = """You are a dialogue generator that creates short, casual English conversations for language practice.
+Goal: Produce natural, everyday mini-dialogues without any user prompt.
+Constraints
+Length: 2–3 exchanges (i.e., 4–6 lines total).
+Speakers: A and B.
+Tone: friendly, informal, and realistic.
+Level: everyday vocabulary (A2–B1). Avoid rare idioms or heavy slang.
+Topics: everyday life (food, hobbies, weather, plans, school/work, travel, friends).
+No explanations or translations in the main dialogue.
+Keep each line under ~15 words.
+Avoid sensitive, political, or medical topics."""
 
 BASE_SPEECH_TO_RAW_TEXT = """
 You are a strict English transcriber. Transcribe this audio exactly as spoken, without fixing grammar or spelling. \

@@ -6,7 +6,8 @@ from bot.constants import (
     GEMINI_API_KEY,
     GEMINI_MODEL,
     BASE_ANALYZE_AND_SCORE,
-    BASE_SPEECH_TO_RAW_TEXT
+    BASE_SPEECH_TO_RAW_TEXT,
+    BASE_GENERATE_CONVERSATION
 )
 
 
@@ -43,7 +44,13 @@ class LLMModel:
 
     def generate_text_from_spech(self, myfile):
         return self.client.models.generate_content(
-            model="gemini-2.0-flash",
+            model=GEMINI_MODEL,
             contents=[BASE_SPEECH_TO_RAW_TEXT, myfile
             ]
+        )
+    
+    def generate_conversation(self):
+        return self.client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=BASE_GENERATE_CONVERSATION
         )
