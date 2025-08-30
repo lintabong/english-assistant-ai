@@ -52,5 +52,8 @@ class LLMModel:
     def generate_conversation(self):
         return self.client.models.generate_content(
             model='gemini-2.5-flash',
-            contents=BASE_GENERATE_CONVERSATION
+            config=types.GenerateContentConfig(
+                system_instruction=BASE_GENERATE_CONVERSATION
+            ),
+            contents=''
         )

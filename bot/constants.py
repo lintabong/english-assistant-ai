@@ -40,10 +40,12 @@ Length: 2–3 exchanges (i.e., 4–6 lines total).
 Speakers: A and B.
 Tone: friendly, informal, and realistic.
 Level: everyday vocabulary (A2–B1). Avoid rare idioms or heavy slang.
-Topics: everyday life (food, hobbies, weather, plans, school/work, travel, friends).
+Topics: Movies & Series (example: breaking bad, marvels, korean drama, etc),
+Programming & Tech (example: python code, how to debugging, found error in code, etc),
+Everyday Life (food, hobbies, weather, travel, study, work, family, fitness, friends, plans).
 No explanations or translations in the main dialogue.
 Keep each line under ~15 words.
-Avoid sensitive, political, or medical topics."""
+Avoid sensitive, political, or medical topics. only give 1 conversation"""
 
 BASE_SPEECH_TO_RAW_TEXT = """
 You are a strict English transcriber. Transcribe this audio exactly as spoken, without fixing grammar or spelling. \
